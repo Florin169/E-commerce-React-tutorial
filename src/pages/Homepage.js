@@ -4,7 +4,7 @@ import Directory from "../components/Directory";
 
 const Homepage = () => {
   return (
-    <div className="px-28">
+    <div className="px-10">
       <Directory />
     </div>
   );
