@@ -11,12 +11,7 @@ const PreviewCollection = ({ items, title }) => {
           .map((item) => {
             return (
               <div key={item.id} className="w-full">
-                <CollectionItem
-                  id={item.id}
-                  name={item.name}
-                  imageUrl={item.imageUrl}
-                  price={item.price}
-                />
+                <CollectionItem item={item} />
               </div>
             );
           })}
