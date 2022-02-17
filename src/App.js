@@ -4,6 +4,7 @@ import { Route, Switch } from "react-router-dom";
 import Shop from "./pages/Shop";
 import Header from "./components/Header";
 import SingInAndUp from "./pages/SingInAndUp";
+import Checkout from "./pages/Checkout";
 import { auth, createUserProfileDocument } from "./firebase/firebase";
 
 const App = () => {
@@ -38,7 +39,8 @@ const App = () => {
       <Switch>
         <Route exact path="/" component={Homepage} />
         <Route exact path="/shop" component={Shop} />
-        <Route path="/signin" component={SingInAndUp} />
+        <Route exact path="/signin" component={SingInAndUp} />
+        <Route exact path="/checkout" component={Checkout} />
       </Switch>
     </div>
   );
