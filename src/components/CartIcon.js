@@ -2,9 +2,11 @@ import React from "react";
 import { ReactComponent as Bag } from "../assets/shopping-bag.svg";
 import { useDispatch } from "react-redux";
 import { toggleCartHidden } from "../redux/cart/cartActions";
+import { useSelector } from "react-redux";
 
 const CartIcon = () => {
   const dispatch = useDispatch();
+  const item = useSelector((state) => state.dropDown.cartItems);
 
   return (
     <div
