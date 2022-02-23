@@ -1,10 +1,15 @@
 import React from "react";
-import CartItem from "../components/CartItem";
 import { useSelector } from "react-redux";
 import CheckoutItem from "../components/CheckoutItem";
+import StripeButton from "../components/StripeButton";
 
 const Checkout = () => {
   const items = useSelector((state) => state.dropDown.cartItems);
+
+  const totalPrice = items.reduce(
+    (accumulate, item) => accumulate + item.price * item.quantity,
+    0
+  );
 
   return (
     <div className=" flex flex-col justify-center items-center">
@@ -30,6 +35,12 @@ const Checkout = () => {
         {items.map((item) => (
           <CheckoutItem key={item.id} item={item} />
         ))}
+      </div>
+      <div className="w-5/12 ">
+        <span className="flex  justify-end text-3xl">
+          TOTAL: $ {totalPrice}
+        </span>
+        <StripeButton price={totalPrice} />
       </div>
     </div>
   );

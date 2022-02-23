@@ -6,7 +6,12 @@ import { useSelector } from "react-redux";
 
 const CartIcon = () => {
   const dispatch = useDispatch();
-  const item = useSelector((state) => state.dropDown.cartItems);
+  const items = useSelector((state) => state.dropDown.cartItems);
+
+  const totalItems = items.reduce(
+    (accumulate, item) => accumulate + item.quantity,
+    0
+  );
 
   return (
     <div
@@ -14,7 +19,7 @@ const CartIcon = () => {
       onClick={() => dispatch(toggleCartHidden())}
     >
       <Bag />
-      <span className="absolute top-2 left-3 ">0</span>
+      <span className="absolute top-2 left-3 ">{totalItems}</span>
     </div>
   );
 };

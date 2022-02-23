@@ -1,16 +1,17 @@
-import React, { useState } from "react";
-import PreviewCollection from "../components/PreviewCollection";
-import data from "../shopData";
+import React from "react";
+import { Route, useParams } from "react-router-dom";
+import CollectionOverview from "../components/CollectionOverview";
+import Category from "./Category";
+import { useSelector } from "react-redux";
 
-const Shop = () => {
-  const [collections] = useState(data);
-  console.log(collections);
+const Shop = ({ match }) => {
+  const items = useSelector((items) => items.shop.data);
+  console.log(items[0].routeName);
 
   return (
     <div className="p-10 w-full h-full">
-      {collections.map(({ id, title, items }) => {
-        return <PreviewCollection key={id} title={title} items={items} />;
-      })}
+      <Route path={`${match.path}`} component={CollectionOverview} />
+      <Route path={`${match.path}/`} component={Category} />
     </div>
   );
 };
